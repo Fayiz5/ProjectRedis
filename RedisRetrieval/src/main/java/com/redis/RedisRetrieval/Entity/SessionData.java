@@ -1,17 +1,18 @@
 package com.redis.RedisRetrieval.Entity;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
 
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProfileWrapper {
+public class SessionData {
+    private List<SessionMast> sessionMast;
 
-    @JsonProperty("profiles")
-    private List<Profiles> profiles;
+    // Getters and Setters
 }
+

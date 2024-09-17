@@ -73,7 +73,7 @@ public class SessionMast {
     @JsonProperty("subscriptionType")
     private int subscriptionType;
 
-    @JsonProperty("sessionDetail")
-    private List<SessionDetail> sessionDetail;
+    @JsonProperty("sessionDetails")
+    private List<SessionDetails> sessionDetail;
 
 }

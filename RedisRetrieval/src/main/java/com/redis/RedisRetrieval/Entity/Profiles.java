@@ -12,7 +12,7 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Subscriber {
+public class Profiles {
 
     @JsonProperty("sid")
     private int sid;
