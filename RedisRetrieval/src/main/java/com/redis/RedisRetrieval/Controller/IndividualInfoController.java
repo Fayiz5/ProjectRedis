@@ -32,4 +32,24 @@ public class IndividualInfoController {
         return new ResponseEntity<>("Individual Info Stored Successfully",HttpStatus.CREATED);
     }
 
+    @PutMapping("/{key}")
+    public ResponseEntity<String> UpdateIndividualInfo(@PathVariable String key, @RequestBody IndividualInfo individualInfo )
+    {
+        boolean success= individualInfoService.updateIndividualInfo(key, individualInfo);
+        if(!success)
+            return new ResponseEntity<>("Update Individual Info failed",HttpStatus.BAD_REQUEST);
+
+        return new ResponseEntity<>("Individual Info Updated Successfully",HttpStatus.CREATED);
+    }
+
+    @DeleteMapping("/{key}")
+    public ResponseEntity<String> DeleteIndividualInfo(@PathVariable String key)
+    {
+        boolean success= individualInfoService.deleteIndividualInfo(key);
+        if(!success)
+            return new ResponseEntity<>("Delete Individual key Info failed"+key,HttpStatus.BAD_REQUEST);
+
+        return new ResponseEntity<>("Individual Info Deleted Successfully"+key,HttpStatus.CREATED);
+    }
+
 }

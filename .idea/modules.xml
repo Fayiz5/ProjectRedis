@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/RedisRetrieval.iml" filepath="$PROJECT_DIR$/.idea/RedisRetrieval.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/ProjectRedis.iml" filepath="$PROJECT_DIR$/.idea/ProjectRedis.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RedisRetrieval/RedisRetrieval.iml" filepath="$PROJECT_DIR$/RedisRetrieval/RedisRetrieval.iml" />
     </modules>
   </component>
 </project>

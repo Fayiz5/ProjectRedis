@@ -1,16 +1,21 @@
 package com.redis.RedisRetrieval.RedisUtil;
 
 import com.redis.RedisRetrieval.Config.Config;
+import com.redis.RedisRetrieval.Service.KeyEventListener;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.data.redis.connection.RedisConnectionFactory;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.listener.ChannelTopic;
+import org.springframework.data.redis.listener.RedisMessageListenerContainer;
 import org.springframework.stereotype.Component;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
-
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -63,5 +68,25 @@ public class RedisPool {
         if (pool != null) {
             pool.close();
         }
+    }
+
+    @Bean
+    public RedisMessageListenerContainer redisMessageListenerContainer(RedisConnectionFactory connectionFactory) {
+        RedisMessageListenerContainer container = new RedisMessageListenerContainer();
+        container.setConnectionFactory(connectionFactory);
+
+        // Listen to key events
+        container.addMessageListener(new KeyEventListener(), new ChannelTopic("__keyevent@0__:set"));
+        container.addMessageListener(new KeyEventListener(), new ChannelTopic("__keyevent@0__:del"));
+        container.addMessageListener(new KeyEventListener(), new ChannelTopic("__keyevent@0__:expired"));
+
+        return container;
+    }
+
+    @Bean
+    public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory factory) {
+        RedisTemplate<String, Object> template = new RedisTemplate<>();
+        template.setConnectionFactory(factory);
+        return template;
     }
 }
