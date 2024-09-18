@@ -1,4 +1,4 @@
-package com.redis.RedisRetrieval.Service;
+package com.redis.RedisRetrieval.Service.RedisServices;
 
 import com.redis.RedisRetrieval.RedisUtil.RedisPool;
 import org.apache.logging.log4j.LogManager;
@@ -8,9 +8,7 @@ import org.springframework.stereotype.Service;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.exceptions.JedisException;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Service

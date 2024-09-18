@@ -4,12 +4,12 @@ import com.redis.RedisRetrieval.Entity.IndividualInfo;
 import com.redis.RedisRetrieval.Exceptions.DataNotFoundException;
 import com.redis.RedisRetrieval.Exceptions.DataProcessingException;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.redis.RedisRetrieval.Service.RedisServices.RedisService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import redis.clients.jedis.Jedis;
 
 import java.util.ArrayList;
 import java.util.Comparator;
