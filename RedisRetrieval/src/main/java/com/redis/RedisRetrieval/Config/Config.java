@@ -12,18 +12,18 @@ import org.springframework.stereotype.Component;
 @Configuration
 public class Config {
 
-    @Value("${server.url}")
+    @Value("${spring.redis.host}")
     private String Redisurl;
 
-    @Value("${server.port}")
-    private String redisport;
+    @Value("${spring.redis.port}")
+    private int redisport;
 
     public String getRedisurl() {
         return Redisurl;
     }
 
 
-    public String getRedisport() {
+    public int getRedisport() {
         return redisport;
     }
 

@@ -31,13 +31,21 @@ public class IndividualInfoService {
         String jsonString = redisService.getKey(key);
 
         if (jsonString == null) {
-            throw new DataNotFoundException("Data not found for key: " + key);
+            try {
+                throw new DataNotFoundException("Data not found for key: " + key);
+            } catch (DataNotFoundException e) {
+                throw new RuntimeException(e);
+            }
         }
 
         try {
             return objectMapper.readValue(jsonString, IndividualInfo.class);
         } catch (JsonProcessingException e) {
-            throw new DataProcessingException("Failed to process JSON for key: " + key, e);
+            try {
+                throw new DataProcessingException("Failed to process JSON for key: " + key, e);
+            } catch (DataProcessingException ex) {
+                throw new RuntimeException(ex);
+            }
         }
     }
 

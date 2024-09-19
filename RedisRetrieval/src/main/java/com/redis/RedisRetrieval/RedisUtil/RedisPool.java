@@ -1,7 +1,6 @@
 package com.redis.RedisRetrieval.RedisUtil;
 
 import com.redis.RedisRetrieval.Config.Config;
-import com.redis.RedisRetrieval.Service.KeyEventListener;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 import org.apache.logging.log4j.LogManager;
@@ -70,23 +69,6 @@ public class RedisPool {
         }
     }
 
-    @Bean
-    public RedisMessageListenerContainer redisMessageListenerContainer(RedisConnectionFactory connectionFactory) {
-        RedisMessageListenerContainer container = new RedisMessageListenerContainer();
-        container.setConnectionFactory(connectionFactory);
 
-        // Listen to key events
-        container.addMessageListener(new KeyEventListener(), new ChannelTopic("__keyevent@0__:set"));
-        container.addMessageListener(new KeyEventListener(), new ChannelTopic("__keyevent@0__:del"));
-        container.addMessageListener(new KeyEventListener(), new ChannelTopic("__keyevent@0__:expired"));
 
-        return container;
-    }
-
-    @Bean
-    public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory factory) {
-        RedisTemplate<String, Object> template = new RedisTemplate<>();
-        template.setConnectionFactory(factory);
-        return template;
-    }
 }

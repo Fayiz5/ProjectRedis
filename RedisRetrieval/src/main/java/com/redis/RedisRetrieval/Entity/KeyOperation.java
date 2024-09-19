@@ -1,8 +1,13 @@
 package com.redis.RedisRetrieval.Entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@Data
 @NoArgsConstructor
+@AllArgsConstructor
+
 public class KeyOperation {
 
     private String key;
@@ -10,34 +15,4 @@ public class KeyOperation {
     private String timestamp;
 
 
-    public KeyOperation(String key, String operationType, String timestamp) {
-        this.key = key;
-        this.operationType = operationType;
-        this.timestamp = timestamp;
-    }
-
-    public String getKey() {
-        return key;
-    }
-
-    public void setKey(String key) {
-        this.key = key;
-    }
-
-    public String getOperationType() {
-        return operationType;
-    }
-
-    public void setOperationType(String operationType) {
-        this.operationType = operationType;
-    }
-
-    public String getTimestamp() {
-        return timestamp;
-    }
-
-    public void setTimestamp(String timestamp) {
-        this.timestamp = timestamp;
-    }
 }
-
